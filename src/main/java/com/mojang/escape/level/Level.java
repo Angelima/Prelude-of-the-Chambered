@@ -1,14 +1,29 @@
 package com.mojang.escape.level;
 
-import java.awt.image.BufferedImage;
-import java.util.*;
-
-import javax.imageio.ImageIO;
-
-import com.mojang.escape.*;
-import com.mojang.escape.entities.*;
+import com.mojang.escape.Art;
+import com.mojang.escape.Game;
+import com.mojang.escape.entities.BatBossEntity;
+import com.mojang.escape.entities.BatEntity;
+import com.mojang.escape.entities.BossOgre;
+import com.mojang.escape.entities.BoulderEntity;
+import com.mojang.escape.entities.Entity;
+import com.mojang.escape.entities.EyeBossEntity;
+import com.mojang.escape.entities.EyeEntity;
+import com.mojang.escape.entities.GhostBossEntity;
+import com.mojang.escape.entities.GhostEntity;
+import com.mojang.escape.entities.Item;
+import com.mojang.escape.entities.OgreEntity;
+import com.mojang.escape.entities.Player;
 import com.mojang.escape.level.block.*;
 import com.mojang.escape.menu.GotLootMenu;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Logger;
 
 public abstract class Level {
 	public Block[] blocks;
@@ -26,11 +41,13 @@ public abstract class Level {
 	protected int floorTex = 0;
 	protected int ceilTex = 0;
 
-	public List<Entity> entities = new ArrayList<Entity>();
+	public List<Entity> entities = new ArrayList<>();
 	protected Game game;
 	public String name = "";
 
 	public Player player;
+
+	private final static Logger LOGGER = Logger.getLogger(Art.class.getName());
 
 	public void init(Game game, String name, int w, int h, int[] pixels) {
 		this.game = game;
@@ -151,7 +168,7 @@ public abstract class Level {
 		return blocks[x + y * width];
 	}
 
-	private static Map<String, Level> loaded = new HashMap<String, Level>();
+	private static Map<String, Level> loaded = new HashMap<>();
 
 	public static void clear() {
 		loaded.clear();
@@ -174,6 +191,7 @@ public abstract class Level {
 
 			return level;
 		} catch (Exception e) {
+			LOGGER.log(java.util.logging.Level.WARNING, "Error while loading level : ", e);
 			throw new RuntimeException(e);
 		}
 	}
@@ -181,8 +199,9 @@ public abstract class Level {
 	private static Level byName(String name) {
 		try {
 			name = name.substring(0, 1).toUpperCase() + name.substring(1);
-			return (Level) Class.forName("com.mojang.escape.level." + name + "Level").newInstance();
+			return (Level) Class.forName("com.mojang.escape.level." + name + "Level").getDeclaredConstructor().newInstance();
 		} catch (Exception e) {
+			LOGGER.log(java.util.logging.Level.WARNING, "Error while loading level : ", e);
 			throw new RuntimeException(e);
 		}
 	}
@@ -194,8 +213,7 @@ public abstract class Level {
 		for (int z = zc - rr; z <= zc + rr; z++) {
 			for (int x = xc - rr; x <= xc + rr; x++) {
 				List<Entity> es = getBlock(x, z).entities;
-				for (int i = 0; i < es.size(); i++) {
-					Entity e = es.get(i);
+				for (Entity e : es) {
 					if (e.isInside(x0, y0, x1, y1)) return true;
 				}
 			}
@@ -210,8 +228,7 @@ public abstract class Level {
 		for (int z = zc - rr; z <= zc + rr; z++) {
 			for (int x = xc - rr; x <= xc + rr; x++) {
 				List<Entity> es = getBlock(x, z).entities;
-				for (int i = 0; i < es.size(); i++) {
-					Entity e = es.get(i);
+				for (Entity e : es) {
 					if (!e.flying && e.isInside(x0, y0, x1, y1)) return true;
 				}
 			}

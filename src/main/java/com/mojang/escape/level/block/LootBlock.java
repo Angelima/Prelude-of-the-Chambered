@@ -1,7 +1,9 @@
 package com.mojang.escape.level.block;
 
-import com.mojang.escape.*;
-import com.mojang.escape.entities.*;
+import com.mojang.escape.Art;
+import com.mojang.escape.Sound;
+import com.mojang.escape.entities.Entity;
+import com.mojang.escape.entities.Player;
 import com.mojang.escape.gui.Sprite;
 
 public class LootBlock extends Block {

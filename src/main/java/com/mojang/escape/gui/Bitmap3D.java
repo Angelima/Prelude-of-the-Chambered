@@ -1,9 +1,11 @@
 package com.mojang.escape.gui;
 
-import com.mojang.escape.*;
+import com.mojang.escape.Art;
+import com.mojang.escape.Game;
 import com.mojang.escape.entities.Entity;
 import com.mojang.escape.level.Level;
-import com.mojang.escape.level.block.*;
+import com.mojang.escape.level.block.Block;
+import com.mojang.escape.level.block.DoorBlock;
 
 public class Bitmap3D extends Bitmap {
 	private double[] zBuffer;

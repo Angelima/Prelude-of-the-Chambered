@@ -1,6 +1,6 @@
 package com.mojang.escape.level.block;
 
-import com.mojang.escape.entities.*;
+import com.mojang.escape.entities.Item;
 import com.mojang.escape.level.Level;
 
 public class LockedDoorBlock extends DoorBlock {

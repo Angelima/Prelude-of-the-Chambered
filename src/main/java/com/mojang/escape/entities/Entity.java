@@ -1,9 +1,11 @@
 package com.mojang.escape.entities;
 
-import java.util.*;
-
 import com.mojang.escape.gui.Sprite;
 import com.mojang.escape.level.Level;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Entity {
 	protected static final Random random = new Random();

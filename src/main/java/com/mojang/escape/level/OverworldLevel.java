@@ -3,6 +3,7 @@ package com.mojang.escape.level;
 import com.mojang.escape.entities.Item;
 
 public class OverworldLevel extends Level {
+
 	public OverworldLevel() {
 		ceilTex = -1;
 		floorCol = 0x508253;

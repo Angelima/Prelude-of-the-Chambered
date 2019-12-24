@@ -1,11 +1,16 @@
 package com.mojang.escape;
 
-import java.awt.event.KeyEvent;
-
-import com.mojang.escape.entities.*;
+import com.mojang.escape.entities.Item;
+import com.mojang.escape.entities.Player;
 import com.mojang.escape.level.Level;
 import com.mojang.escape.level.block.LadderBlock;
-import com.mojang.escape.menu.*;
+import com.mojang.escape.menu.LoseMenu;
+import com.mojang.escape.menu.Menu;
+import com.mojang.escape.menu.PauseMenu;
+import com.mojang.escape.menu.TitleMenu;
+import com.mojang.escape.menu.WinMenu;
+
+import java.awt.event.KeyEvent;
 
 public class Game {
 	public int time;

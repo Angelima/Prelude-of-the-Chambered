@@ -1,6 +1,7 @@
 package com.mojang.escape.entities;
 
-import com.mojang.escape.*;
+import com.mojang.escape.Art;
+import com.mojang.escape.Sound;
 
 public class EyeBossEntity extends EnemyEntity {
 	public EyeBossEntity(double x, double z) {

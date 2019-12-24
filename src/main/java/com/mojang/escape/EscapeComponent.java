@@ -1,11 +1,21 @@
 package com.mojang.escape;
 
-import java.awt.*;
-import java.awt.image.*;
-
-import javax.swing.*;
-
 import com.mojang.escape.gui.Screen;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.Canvas;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class EscapeComponent extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -24,6 +34,8 @@ public class EscapeComponent extends Canvas implements Runnable {
 	private InputHandler inputHandler;
 	private Cursor emptyCursor, defaultCursor;
 	private boolean hadFocus = false;
+
+	private final static Logger LOGGER = Logger.getLogger(EscapeComponent.class.getName());
 
 	public EscapeComponent() {
 		Dimension size = new Dimension(WIDTH * SCALE, HEIGHT * SCALE);
@@ -55,13 +67,16 @@ public class EscapeComponent extends Canvas implements Runnable {
 		thread.start();
 	}
 
+	/**
+	 * Function that allows stop ticks
+	 */
 	public synchronized void stop() {
 		if (!running) return;
 		running = false;
 		try {
 			thread.join();
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			LOGGER.log(Level.WARNING, "Error while stoping game : ", e);
 		}
 	}
 
@@ -105,7 +120,7 @@ public class EscapeComponent extends Canvas implements Runnable {
 				try {
 					Thread.sleep(1);
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					LOGGER.log(Level.WARNING, "Error while interrupting game : ", e);
 				}
 			}
 
@@ -131,9 +146,7 @@ public class EscapeComponent extends Canvas implements Runnable {
 
 		screen.render(game, hasFocus());
 
-		for (int i = 0; i < WIDTH * HEIGHT; i++) {
-			pixels[i] = screen.pixels[i];
-		}
+		System.arraycopy(screen.pixels, 0, pixels, 0, WIDTH * HEIGHT);
 
 		Graphics g = bs.getDrawGraphics();
 		g.fillRect(0, 0, getWidth(), getHeight());

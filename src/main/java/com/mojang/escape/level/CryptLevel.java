@@ -3,6 +3,7 @@ package com.mojang.escape.level;
 import com.mojang.escape.entities.Item;
 
 public class CryptLevel extends Level {
+
 	public CryptLevel() {
 		floorCol = 0x404040;
 		ceilCol = 0x404040;

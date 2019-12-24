@@ -15,7 +15,7 @@ public enum Item {
 	public final String name;
 	public final String description;
 	
-	private Item(int icon, int color, String name, String description) {
+	Item(int icon, int color, String name, String description) {
 		this.icon = icon;
 		this.color = color;
 		this.name = name;

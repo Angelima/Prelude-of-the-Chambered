@@ -3,6 +3,7 @@ package com.mojang.escape.level;
 import com.mojang.escape.level.block.Block;
 
 public class StartLevel extends Level {
+
 	public StartLevel() {
 		name = "The Prison";
 	}

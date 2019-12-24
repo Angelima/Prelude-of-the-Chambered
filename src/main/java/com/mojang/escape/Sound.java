@@ -1,8 +1,16 @@
 package com.mojang.escape;
 
-import javax.sound.sampled.*;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Sound {
+
+	private final static Logger LOGGER = Logger.getLogger(Sound.class.getName());
+
 	public static Sound altar = loadSound("/snd/altar.wav");
 	public static Sound bosskill = loadSound("/snd/bosskill.wav");
 	public static Sound click1 = loadSound("/snd/click.wav");
@@ -33,7 +41,7 @@ public class Sound {
 			clip.open(ais);
 			sound.clip = clip;
 		} catch (Exception e) {
-			System.out.println(e);
+			LOGGER.log(Level.WARNING, "Error while playing sound : ", e);
 		}
 		return sound;
 	}
@@ -43,18 +51,16 @@ public class Sound {
 	public void play() {
 		try {
 			if (clip != null) {
-				new Thread() {
-					public void run() {
-						synchronized (clip) {
-							clip.stop();
-							clip.setFramePosition(0);
-							clip.start();
-						}
+				new Thread(() -> {
+					synchronized (clip) {
+						clip.stop();
+						clip.setFramePosition(0);
+						clip.start();
 					}
-				}.start();
+				}).start();
 			}
 		} catch (Exception e) {
-			System.out.println(e);
+			LOGGER.log(Level.WARNING, "Error while playing sound : ", e);
 		}
 	}
 }

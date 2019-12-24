@@ -1,10 +1,11 @@
 package com.mojang.escape.gui;
 
-import java.util.Random;
-
-import com.mojang.escape.*;
+import com.mojang.escape.Art;
+import com.mojang.escape.Game;
 import com.mojang.escape.entities.Item;
 import com.mojang.escape.level.block.Block;
+
+import java.util.Random;
 
 public class Screen extends Bitmap {
 	private static final int PANEL_HEIGHT = 29;

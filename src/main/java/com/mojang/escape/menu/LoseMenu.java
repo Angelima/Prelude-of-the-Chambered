@@ -1,6 +1,8 @@
 package com.mojang.escape.menu;
 
-import com.mojang.escape.*;
+import com.mojang.escape.Art;
+import com.mojang.escape.Game;
+import com.mojang.escape.Sound;
 import com.mojang.escape.entities.Player;
 import com.mojang.escape.gui.Bitmap;
 

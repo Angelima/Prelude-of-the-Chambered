@@ -1,7 +1,9 @@
 package com.mojang.escape.entities;
 
-import com.mojang.escape.*;
-import com.mojang.escape.gui.*;
+import com.mojang.escape.Art;
+import com.mojang.escape.Sound;
+import com.mojang.escape.gui.PoofSprite;
+import com.mojang.escape.gui.Sprite;
 
 public class EnemyEntity extends Entity {
 	protected Sprite sprite;

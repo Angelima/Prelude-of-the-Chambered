@@ -1,10 +1,11 @@
 package com.mojang.escape;
 
-import java.awt.image.BufferedImage;
+import com.mojang.escape.gui.Bitmap;
 
 import javax.imageio.ImageIO;
-
-import com.mojang.escape.gui.Bitmap;
+import java.awt.image.BufferedImage;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Art {
 	public static Bitmap walls = loadBitmap("/tex/walls.png");
@@ -16,6 +17,8 @@ public class Art {
 	public static Bitmap sky = loadBitmap("/tex/sky.png");
 
 	public static Bitmap logo = loadBitmap("/gui/logo.png");
+
+	private final static Logger LOGGER = Logger.getLogger(Art.class.getName());
 
 	public static Bitmap loadBitmap(String fileName) {
 		try {
@@ -34,6 +37,7 @@ public class Art {
 			}
 			return result;
 		} catch (Exception e) {
+			LOGGER.log(Level.WARNING, "Error while loading bitmap : ", e);
 			throw new RuntimeException(e);
 		}
 	}

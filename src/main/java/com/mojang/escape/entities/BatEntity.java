@@ -1,6 +1,6 @@
 package com.mojang.escape.entities;
 
-import com.mojang.escape.*;
+import com.mojang.escape.Art;
 
 public class BatEntity extends EnemyEntity {
 	public BatEntity(double x, double z) {

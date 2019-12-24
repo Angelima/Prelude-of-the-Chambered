@@ -1,10 +1,10 @@
 package com.mojang.escape.level.block;
 
-import java.util.Random;
-
 import com.mojang.escape.Art;
 import com.mojang.escape.gui.Sprite;
 import com.mojang.escape.level.Level;
+
+import java.util.Random;
 
 public class TorchBlock extends Block {
 	private Sprite torchSprite;

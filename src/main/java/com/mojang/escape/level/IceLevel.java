@@ -3,6 +3,7 @@ package com.mojang.escape.level;
 import com.mojang.escape.entities.Item;
 
 public class IceLevel extends Level {
+
 	public IceLevel() {
 		floorCol = 0xB8DBE0;
 		ceilCol = 0xB8DBE0;

@@ -1,6 +1,7 @@
 package com.mojang.escape;
 
 import java.awt.event.*;
+import java.util.Arrays;
 
 public class InputHandler implements KeyListener, FocusListener, MouseListener, MouseMotionListener {
 	public boolean[] keys = new boolean[65536];
@@ -30,9 +31,7 @@ public class InputHandler implements KeyListener, FocusListener, MouseListener, 
 	}
 
 	public void focusLost(FocusEvent arg0) {
-		for (int i=0; i<keys.length; i++) {
-			keys[i] = false;
-		}
+		Arrays.fill(keys, false);
 	}
 
 	public void keyPressed(KeyEvent e) {

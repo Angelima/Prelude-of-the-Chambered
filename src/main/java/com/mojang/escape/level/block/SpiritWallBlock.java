@@ -1,7 +1,8 @@
 package com.mojang.escape.level.block;
 
 import com.mojang.escape.Art;
-import com.mojang.escape.entities.*;
+import com.mojang.escape.entities.Bullet;
+import com.mojang.escape.entities.Entity;
 import com.mojang.escape.gui.Sprite;
 
 public class SpiritWallBlock extends Block {

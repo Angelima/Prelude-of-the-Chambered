@@ -1,10 +1,14 @@
 package com.mojang.escape.level.block;
 
-import java.util.*;
-
-import com.mojang.escape.entities.*;
+import com.mojang.escape.entities.Entity;
+import com.mojang.escape.entities.Item;
+import com.mojang.escape.entities.Player;
 import com.mojang.escape.gui.Sprite;
 import com.mojang.escape.level.Level;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Block {
 	protected static Random random = new Random();

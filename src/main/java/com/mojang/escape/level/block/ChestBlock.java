@@ -1,6 +1,7 @@
 package com.mojang.escape.level.block;
 
-import com.mojang.escape.*;
+import com.mojang.escape.Art;
+import com.mojang.escape.Sound;
 import com.mojang.escape.entities.Item;
 import com.mojang.escape.gui.Sprite;
 import com.mojang.escape.level.Level;

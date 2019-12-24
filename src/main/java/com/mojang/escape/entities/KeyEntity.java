@@ -1,6 +1,7 @@
 package com.mojang.escape.entities;
 
-import com.mojang.escape.*;
+import com.mojang.escape.Art;
+import com.mojang.escape.Sound;
 import com.mojang.escape.gui.Sprite;
 
 public class KeyEntity extends Entity {

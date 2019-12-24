@@ -4,6 +4,7 @@ import com.mojang.escape.Game;
 import com.mojang.escape.entities.Item;
 
 public class DungeonLevel extends Level {
+
 	public DungeonLevel() {
 		wallCol = 0xC64954;
 		floorCol = 0x8E4A51;

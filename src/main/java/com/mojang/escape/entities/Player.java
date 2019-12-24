@@ -1,9 +1,13 @@
 package com.mojang.escape.entities;
 
-import java.util.*;
-
 import com.mojang.escape.Sound;
-import com.mojang.escape.level.block.*;
+import com.mojang.escape.level.block.Block;
+import com.mojang.escape.level.block.IceBlock;
+import com.mojang.escape.level.block.WaterBlock;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Player extends Entity {
 	public double bob, bobPhase, turnBob;
@@ -24,9 +28,7 @@ public class Player extends Entity {
 
 	public Player() {
 		r = 0.3;
-		for (int i = 0; i < items.length; i++) {
-			items[i] = Item.none;
-		}
+		Arrays.fill(items, Item.none);
 	}
 
 	boolean sliding = false;
